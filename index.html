@@ -1,58 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jon Nuredini | Portfolio</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Jon Nuredini | Full Stack Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luxury Full Stack Developer Portfolio">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="tech-bg">
+          <span></span>
+          <span></span>
+          <span></span>
+    </div>
 
-<!-- Dark / Light Toggle -->
-<div class="theme-toggle" id="themeToggle">🌙</div>
 
-<!-- Particles -->
-<canvas id="particles"></canvas>
+<div class="noise"></div>
 
 <header class="hero">
-  <div class="glass-card">
-    <h1>Jon Nuredini</h1>
-    <h2 class="typed"></h2>
-    <a href="#projects" class="btn">View Projects</a>
+  <div class="top-bar">
+    <span class="logo">JN</span>
+    <button id="langToggle">EN</button>
+  </div>
 
-    <div class="socials">
-      <a href="https://github.com/jon-nuredini" target="_blank">GitHub</a>
-      <a href="#">LinkedIn</a>
-    </div>
+  <div class="hero-inner">
+    <h1 id="name"></h1>
+    <p class="hero-title" id="title"></p>
+    <div class="hero-divider"></div>
   </div>
 </header>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card" data-project="1">Portfolio Website</div>
-    <div class="project-card" data-project="2">Rent a Car System</div>
-    <div class="project-card" data-project="3">Web App</div>
+<main>
+
+<section class="section reveal">
+  <h2 id="aboutTitle"></h2>
+  <p id="aboutText"></p>
+</section>
+
+<section class="section reveal">
+  <h2 id="skillsTitle"></h2>
+
+  <div class="skills-grid">
+    <div class="skill-box">
+      <h3>Frontend</h3>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React Native</li>
+      </ul>
+    </div>
+
+    <div class="skill-box">
+      <h3>Backend</h3>
+      <ul>
+        <li>PHP</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>C++</li>
+        <li>C#</li>
+      </ul>
+    </div>
+
+    <div class="skill-box">
+      <h3>Database & Tools</h3>
+      <ul>
+        <li>MySQL</li>
+        <li>Git</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: jonnuredini42@gmail.com.com</p>
+<section class="section reveal">
+  <h2 id="projectTitle"></h2>
+
+  <div class="project-card">
+    <h3 id="projectName"></h3>
+    <p id="projectDesc"></p>
+    <span class="tech">HTML · CSS · JavaScript · PHP · MySQL</span>
+  </div>
 </section>
+
+<section class="section reveal">
+  <h2 id="contactTitle"></h2>
+  <div class="contact-box">
+    <p><span>Email</span> jonnuredini42@gmail.com</p>
+    <p><span>Phone</span> +383 49 728 260</p>
+  </div>
+</section>
+
+</main>
 
 <footer>
   © 2025 Jon Nuredini
 </footer>
-
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span id="closeModal">×</span>
-    <h3 id="modalTitle"></h3>
-    <p id="modalText"></p>
-  </div>
-</div>
 
 <script src="script.js"></script>
 </body>
