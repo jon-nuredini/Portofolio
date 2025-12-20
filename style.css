@@ -1,0 +1,79 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue', sans-serif; }
+
+body {
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  line-height:1.6;
+}
+
+/* Hero Section */
+.hero {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  position:relative;
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  padding:40px 25px;
+  border-radius:25px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.glass-card:hover {
+  transform: scale(1.05);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+.glass-card h1 {
+  font-size:2.8rem;
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+.glass-card p {
+  font-size:1.2rem;
+  margin-bottom:20px;
+  color:#ddd;
+}
+.btn {
+  padding:12px 28px;
+  background: rgba(255,255,255,0.15);
+  border-radius:25px;
+  font-weight:600;
+  transition:0.3s;
+}
+.btn:hover { background: rgba(255,255,255,0.35); transform: scale(1.05); }
+
+/* Sections */
+main section { padding:80px 20px; max-width:1000px; margin:auto; text-align:center; }
+section h2 { font-size:2rem; margin-bottom:25px; color:#ffd700; }
+
+/* Skills */
+.skills-grid { display:flex; flex-direction:column; gap:20px; }
+.skill-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); padding:18px; border-radius:20px; transition:0.3s; cursor:pointer; }
+.skill-card:hover { transform: scale(1.05); box-shadow:0 10px 30px rgba(255,255,255,0.2); }
+
+/* Projects */
+.projects-grid { display:flex; flex-direction:column; gap:20px; }
+.project-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); padding:20px; border-radius:20px; transition:0.3s; cursor:pointer; }
+.project-card:hover { transform: scale(1.05); box-shadow:0 12px 35px rgba(255,255,255,0.25); }
+
+/* Footer */
+footer { text-align:center; padding:20px; background: rgba(0,0,0,0.3); font-size:0.95rem; }
+
+/* Scroll Animations */
+.opacity-0 { opacity:0; transform: translateY(30px); transition: all 0.7s ease-out; }
+.appear { opacity:1; transform: translateY(0); }
+
+/* Responsive Mobile */
+@media(max-width:768px){
+  .glass-card h1 { font-size:2.2rem; }
+  .glass-card p { font-size:1rem; }
+  main section { padding:60px 15px; }
+  .skills-grid, .projects-grid { gap:15px; }
+}
