@@ -52,14 +52,14 @@ document.getElementById("langToggle").addEventListener("click", () => {
 render(currentLang);
 
 // Reveal on scroll
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
-      el.classList.add("active");
-    }
-  });
-});
+// const reveals = document.querySelectorAll(".reveal");
+// window.addEventListener("scroll", () => {
+//   reveals.forEach(el => {
+//     if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+//       el.classList.add("active");
+//     }
+//   });
+// });
 
 // Liquid Glass Hover effect for skill/project cards
 const glassCards = document.querySelectorAll(".skill-box, .project-card");
