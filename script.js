@@ -52,14 +52,14 @@ document.getElementById("langToggle").addEventListener("click", () => {
 render(currentLang);
 
 // Reveal on scroll
-// const reveals = document.querySelectorAll(".reveal");
-// window.addEventListener("scroll", () => {
-//   reveals.forEach(el => {
-//     if (el.getBoundingClientRect().top < window.innerHeight - 80) {
-//       el.classList.add("active");
-//     }
-//   });
-// });
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+      el.classList.add("active");
+    }
+  });
+});
 
 // Liquid Glass Hover effect for skill/project cards
 const glassCards = document.querySelectorAll(".skill-box, .project-card");
@@ -87,19 +87,19 @@ glassCards.forEach(card => {
 });
 
 // Interactive tech background (subtle liquid effect)
-const techBg = document.querySelector(".tech-bg");
+// const techBg = document.querySelector(".tech-bg");
 
-window.addEventListener("mousemove", e => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 40;
-  const y = (e.clientY / window.innerHeight - 0.5) * 40;
-  techBg.style.transform = `translate(${x}px, ${y}px)`;
-});
+// window.addEventListener("mousemove", e => {
+//   const x = (e.clientX / window.innerWidth - 0.5) * 40;
+//   const y = (e.clientY / window.innerHeight - 0.5) * 40;
+//   techBg.style.transform = `translate(${x}px, ${y}px)`;
+// });
 
-window.addEventListener("load", () => {
-  const heroElements = document.querySelectorAll(".hero-inner h1, .hero-inner .hero-title, .hero-divider");
-  heroElements.forEach((el, i) => {
-    setTimeout(() => {
-      el.classList.add("active");
-    }, i * 300);
-  });
-});
+// window.addEventListener("load", () => {
+//   const heroElements = document.querySelectorAll(".hero-inner h1, .hero-inner .hero-title, .hero-divider");
+//   heroElements.forEach((el, i) => {
+//     setTimeout(() => {
+//       el.classList.add("active");
+//     }, i * 300);
+//   });
+// });
