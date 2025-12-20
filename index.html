@@ -3,55 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jon Portfolio Professional</title>
+<title>Jon Nuredini | Portfolio</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Dark / Light Toggle -->
+<div class="theme-toggle" id="themeToggle">🌙</div>
+
+<!-- Particles -->
+<canvas id="particles"></canvas>
+
 <header class="hero">
   <div class="glass-card">
     <h1>Jon Nuredini</h1>
-    <p>Full-Stack Developer & DevOps</p>
-    <a href="#about" class="btn">Discover My Work</a>
+    <h2 class="typed"></h2>
+    <a href="#projects" class="btn">View Projects</a>
+
+    <div class="socials">
+      <a href="https://github.com/jon-nuredini" target="_blank">GitHub</a>
+      <a href="#">LinkedIn</a>
+    </div>
   </div>
 </header>
 
-<main>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I design and build modern web applications, focusing on performance, clean code, and professional aesthetics.</p>
-  </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card" data-project="1">Portfolio Website</div>
+    <div class="project-card" data-project="2">Rent a Car System</div>
+    <div class="project-card" data-project="3">Web App</div>
+  </div>
+</section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card">HTML / CSS / JS</div>
-      <div class="skill-card">React / Node.js</div>
-      <div class="skill-card">PHP / MySQL</div>
-      <div class="skill-card">Git / GitHub</div>
-      <div class="skill-card">DevOps / CI/CD</div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">Project 1</div>
-      <div class="project-card">Project 2</div>
-      <div class="project-card">Project 3</div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: jon@example.com</p>
-    <p>GitHub: <a href="https://github.com/jon-nuredini">github.com/jon-nuredini</a></p>
-  </section>
-</main>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: jonnuredini42@gmail.com.com</p>
+</section>
 
 <footer>
-  <p>&copy; 2025 Jon Nuredini</p>
+  © 2025 Jon Nuredini
 </footer>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span id="closeModal">×</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalText"></p>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
