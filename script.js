@@ -17,17 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "Database & Tools", items: ["MySQL", "Git"] }
       ],
       skillDescriptions: {
-        "HTML": "HTML është gjuha bazë për strukturimin e faqeve web.",
-        "CSS": "CSS përdoret për stilizimin dhe pamjen e elementeve në web.",
-        "JavaScript": "JavaScript sjell interaktivitet dhe logjikë në web.",
-        "React Native": "React Native përdoret për zhvillimin e aplikacioneve mobile.",
-        "PHP": "PHP është gjuhë server-side për zhvillimin e web-it dinamike.",
-        "Java": "Java është gjuhë e fuqishme për aplikacione enterprise dhe Android.",
-        "Python": "Python përdoret për web, data, AI dhe shumë më tepër.",
-        "C++": "C++ përdoret për programe performante dhe software kompleks.",
-        "C#": "C# përdoret kryesisht për aplikacione Windows dhe Unity.",
-        "MySQL": "MySQL është një sistem menaxhimi bazash të dhënash relationale.",
-        "Git": "Git përdoret për versionimin dhe menaxhimin e kodit."
+        "HTML": "HTML është gjuha bazë për strukturimin e faqeve web. Përdoret për të organizuar elementet e faqes, si tituj, paragrafë, lista, tabela dhe media. Pa HTML, një faqe web nuk do të kishte strukturë të kuptueshme.",
+        "CSS": "CSS përdoret për stilizimin dhe pamjen vizuale të elementeve në web. Me CSS mund të ndryshosh ngjyrat, fontet, pozicionimin, animacionet dhe layout-et e faqeve web, duke krijuar eksperienca vizuale tërheqëse.",
+        "JavaScript": "JavaScript është gjuhë programimi që sjell interaktivitet në faqet web. Mund të përdoret për formulare, animacione, manipulim të DOM, lojëra, aplikacione single-page dhe shumë funksione dinamike.",
+        "React Native": "React Native është framework për zhvillimin e aplikacioneve mobile cross-platform. Përdoret për të krijuar aplikacione native për Android dhe iOS duke përdorur JavaScript dhe React.",
+        "PHP": "PHP është gjuhë server-side për zhvillimin e web-it dinamike. Mundëson krijimin e faqeve që përpunojnë të dhëna, menaxhojnë databaza dhe ndërveprojnë me përdoruesit në mënyrë të sigurt dhe efikase.",
+        "Java": "Java është gjuhë e fuqishme për aplikacione enterprise, aplikacione Android dhe sisteme komplekse. Ofron stabilitet, siguri dhe performancë të lartë për software profesional.",
+        "Python": "Python përdoret për web development, data analysis, AI, machine learning dhe shumë projekte të tjera. Karakterizohet nga sintaksa e thjeshtë dhe ekosistemi i madh i librarive.",
+        "C++": "C++ përdoret për programe performante dhe software kompleks. Është ideale për aplikacione që kërkojnë përdorim intensiv të memorie dhe llogaritje të shpejta, si lojëra dhe sisteme operative.",
+        "C#": "C# përdoret kryesisht për zhvillimin e aplikacioneve Windows, lojërave në Unity dhe aplikacione enterprise. Ofron integrim të lehtë me ekosistemin Microsoft.",
+        "MySQL": "MySQL është sistem menaxhimi i bazave të dhënash relationale. Lejon ruajtjen, organizimin dhe manipulimin e të dhënave në mënyrë të strukturuar dhe të sigurt.",
+        "Git": "Git është sistem versionimi i kodit. Lejon menaxhimin e ndryshimeve në projekte software, bashkëpunim midis developer-ëve dhe historikun e plotë të zhvillimit."
       },
       projectTitle: "Projekti Kryesor",
       projects: [
@@ -56,17 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "Database & Tools", items: ["MySQL", "Git"] }
       ],
       skillDescriptions: {
-        "HTML": "HTML is the core language for structuring web pages.",
-        "CSS": "CSS is used to style and visually design web elements.",
-        "JavaScript": "JavaScript adds interactivity and logic to web pages.",
-        "React Native": "React Native is used for mobile application development.",
-        "PHP": "PHP is a server-side language for dynamic web development.",
-        "Java": "Java is a powerful language for enterprise applications and Android.",
-        "Python": "Python is used for web, data, AI, and much more.",
-        "C++": "C++ is used for high-performance programs and complex software.",
-        "C#": "C# is mainly used for Windows apps and Unity development.",
-        "MySQL": "MySQL is a relational database management system.",
-        "Git": "Git is used for version control and managing code."
+        "HTML": "HTML is the foundational language for structuring web pages. It organizes page elements such as headings, paragraphs, lists, tables, and media. Without HTML, a web page would have no meaningful structure.",
+        "CSS": "CSS is used for styling and visually designing web elements. It allows control over colors, fonts, positioning, animations, and page layouts, creating visually engaging web experiences.",
+        "JavaScript": "JavaScript is a programming language that adds interactivity to web pages. It can be used for forms, animations, DOM manipulation, games, single-page applications, and other dynamic functionalities.",
+        "React Native": "React Native is a framework for cross-platform mobile application development. It allows building native apps for Android and iOS using JavaScript and React.",
+        "PHP": "PHP is a server-side language for dynamic web development. It enables data processing, database management, and secure user interactions efficiently.",
+        "Java": "Java is a powerful language used for enterprise applications, Android apps, and complex systems. It offers stability, security, and high performance for professional software.",
+        "Python": "Python is used for web development, data analysis, AI, machine learning, and more. Known for its simple syntax and large library ecosystem.",
+        "C++": "C++ is used for high-performance and complex software. Ideal for applications that require intensive memory usage and fast computations, such as games and operating systems.",
+        "C#": "C# is mainly used for Windows applications, Unity games, and enterprise software. Provides smooth integration with the Microsoft ecosystem.",
+        "MySQL": "MySQL is a relational database management system. It allows structured and secure storage, organization, and manipulation of data.",
+        "Git": "Git is a version control system. It manages code changes, enables collaboration among developers, and keeps a complete development history."
       },
       projectTitle: "Featured Projects",
       projects: [
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let lang = "en";
 
-  // FUNKSION RENDERO
+  // RENDER FUNCTION
   function render() {
     const d = data[lang];
 
@@ -159,28 +159,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // SKILL MODAL
+  // SKILL MODAL MODERN
   const modal = el("skillModal");
   const modalName = el("modalSkillName");
   const modalDesc = el("modalSkillDesc");
   const closeModal = el("closeModal");
 
   function attachSkillModal() {
-    const spans = document.querySelectorAll(".skill-tags span");
-    spans.forEach(span => {
-      span.onclick = () => {
-        const desc = data[lang].skillDescriptions[span.textContent];
-        if(desc){
-          modalName.textContent = span.textContent;
-          modalDesc.textContent = desc;
-          modal.style.display = "flex";
-        }
-      };
-    });
-  }
+  const spans = document.querySelectorAll(".skill-tags span");
+  spans.forEach(span => {
+    span.onclick = () => {
+      // Marrja e përshkrimit sipas gjuhës aktuale
+      const desc = data[lang].skillDescriptions[span.textContent];
+      if(desc){
+        modalName.textContent = span.textContent;
+        modalDesc.textContent = desc;
+        modal.style.display = "flex";
+        setTimeout(() => modal.classList.add("show"), 10); // për efekt smooth scale/fade
+      }
+    };
+  });
+}
 
-  closeModal.onclick = () => modal.style.display = "none";
-  window.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
+
+  closeModal.onclick = () => {
+    modal.classList.remove("show");
+    setTimeout(() => modal.style.display = "none", 300);
+  };
+
+  window.onclick = (e) => {
+    if(e.target === modal){
+      modal.classList.remove("show");
+      setTimeout(() => modal.style.display = "none", 300);
+    }
+  };
 
   // INITIAL RENDER
   render();
