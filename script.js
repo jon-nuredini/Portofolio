@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const el = id => document.getElementById(id);
 
+  // DATA ME DY GJUHET
   const data = {
     sq: {
       name: "Jon Nuredini",
@@ -15,10 +16,30 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "Backend", items: ["PHP", "Java", "Python", "C++", "C#"] },
         { title: "Database & Tools", items: ["MySQL", "Git"] }
       ],
+      skillDescriptions: {
+        "HTML": "HTML është gjuha bazë për strukturimin e faqeve web.",
+        "CSS": "CSS përdoret për stilizimin dhe pamjen e elementeve në web.",
+        "JavaScript": "JavaScript sjell interaktivitet dhe logjikë në web.",
+        "React Native": "React Native përdoret për zhvillimin e aplikacioneve mobile.",
+        "PHP": "PHP është gjuhë server-side për zhvillimin e web-it dinamike.",
+        "Java": "Java është gjuhë e fuqishme për aplikacione enterprise dhe Android.",
+        "Python": "Python përdoret për web, data, AI dhe shumë më tepër.",
+        "C++": "C++ përdoret për programe performante dhe software kompleks.",
+        "C#": "C# përdoret kryesisht për aplikacione Windows dhe Unity.",
+        "MySQL": "MySQL është një sistem menaxhimi bazash të dhënash relationale.",
+        "Git": "Git përdoret për versionimin dhe menaxhimin e kodit."
+      },
       projectTitle: "Projekti Kryesor",
-      projectName: "Sistem për Menaxhimin e Rent a Car",
-      projectDesc:
-        "Sistem i plotë për menaxhimin e flotës së automjeteve, klientëve, rezervimeve, të hyrave, TVSH-së dhe gjenerimit automatik të kontratave.",
+      projects: [
+        {
+          name: "Sistem për Menaxhimin e Rent a Car",
+          desc: "Sistem i plotë për menaxhimin e flotës së automjeteve, klientëve, rezervimeve, të hyrave, TVSH-së dhe gjenerimit automatik të kontratave."
+        },
+        {
+          name: "HosData",
+          desc: "Sistem i avancuar për menaxhimin elektronik të një spitali. Ofron regjistrimin e stafit me përdorues unik, menaxhimin e pacientëve dhe historikut të diagnozave, përcjelljen e terapisë dhe procedurave, dhe organizimin e të gjitha proceseve administrative dhe klinike."
+        }
+      ],
       contactTitle: "Kontakt"
     },
 
@@ -34,16 +55,37 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "Backend", items: ["PHP", "Java", "Python", "C++", "C#"] },
         { title: "Database & Tools", items: ["MySQL", "Git"] }
       ],
-      projectTitle: "Featured Project",
-      projectName: "Rent a Car Management System",
-      projectDesc:
-        "A complete system for managing vehicle fleets, clients, reservations, revenue, VAT calculations, and automatic contract generation.",
+      skillDescriptions: {
+        "HTML": "HTML is the core language for structuring web pages.",
+        "CSS": "CSS is used to style and visually design web elements.",
+        "JavaScript": "JavaScript adds interactivity and logic to web pages.",
+        "React Native": "React Native is used for mobile application development.",
+        "PHP": "PHP is a server-side language for dynamic web development.",
+        "Java": "Java is a powerful language for enterprise applications and Android.",
+        "Python": "Python is used for web, data, AI, and much more.",
+        "C++": "C++ is used for high-performance programs and complex software.",
+        "C#": "C# is mainly used for Windows apps and Unity development.",
+        "MySQL": "MySQL is a relational database management system.",
+        "Git": "Git is used for version control and managing code."
+      },
+      projectTitle: "Featured Projects",
+      projects: [
+        {
+          name: "Rent a Car Management System",
+          desc: "A complete system for managing vehicle fleets, clients, reservations, revenue, VAT calculations, and automatic contract generation."
+        },
+        {
+          name: "HosData",
+          desc: "Advanced system for electronic hospital management. Provides staff registration with unique accounts, patient and diagnosis history management, therapy tracking, and centralizes all administrative and clinical processes efficiently."
+        }
+      ],
       contactTitle: "Contact"
     }
   };
 
   let lang = "en";
 
+  // FUNKSION RENDERO
   function render() {
     const d = data[lang];
 
@@ -53,13 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     el("aboutText").textContent = d.aboutText;
     el("skillsTitle").textContent = d.skillsTitle;
     el("projectTitle").textContent = d.projectTitle;
-    el("projectName").textContent = d.projectName;
-    el("projectDesc").textContent = d.projectDesc;
     el("contactTitle").textContent = d.contactTitle;
 
+    // SKILL CARDS
     const skillsGrid = el("skillsGrid");
     skillsGrid.innerHTML = "";
-
     d.skills.forEach((group, i) => {
       const box = document.createElement("div");
       box.className = "skill-modern reveal";
@@ -71,14 +111,31 @@ document.addEventListener("DOMContentLoaded", () => {
           ${group.items.map(item => `<span>${item}</span>`).join("")}
         </div>
       `;
-
       skillsGrid.appendChild(box);
     });
 
+    // PROJECTS
+    const projectSection = el("projectDesc");
+    projectSection.innerHTML = `<div class="project-grid"></div>`;
+    const projectGrid = projectSection.querySelector(".project-grid");
+
+    d.projects.forEach((p) => {
+      const card = document.createElement("div");
+      card.className = "project-card reveal";
+      card.innerHTML = `
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+      `;
+      projectGrid.appendChild(card);
+    });
+
     el("footer").textContent = `© ${new Date().getFullYear()} Jon Nuredini`;
+
     observe();
+    attachSkillModal(); // shtoj modal behavior pas rendertimit
   }
 
+  // INTERSECTION OBSERVER
   function observe() {
     const els = document.querySelectorAll(".reveal");
     const obs = new IntersectionObserver(entries => {
@@ -88,19 +145,43 @@ document.addEventListener("DOMContentLoaded", () => {
     els.forEach(el => obs.observe(el));
   }
 
-  // Language toggle
+  // LANGUAGE TOGGLE
   el("langToggle").onclick = () => {
     lang = lang === "en" ? "sq" : "en";
     render();
   };
 
-  // GO ON TOP BUTTON
-  const goTop = document.getElementById("goTop");
-  if (goTop) {
+  // GO ON TOP
+  const goTop = el("goTop");
+  if(goTop){
     goTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
+  // SKILL MODAL
+  const modal = el("skillModal");
+  const modalName = el("modalSkillName");
+  const modalDesc = el("modalSkillDesc");
+  const closeModal = el("closeModal");
+
+  function attachSkillModal() {
+    const spans = document.querySelectorAll(".skill-tags span");
+    spans.forEach(span => {
+      span.onclick = () => {
+        const desc = data[lang].skillDescriptions[span.textContent];
+        if(desc){
+          modalName.textContent = span.textContent;
+          modalDesc.textContent = desc;
+          modal.style.display = "flex";
+        }
+      };
+    });
+  }
+
+  closeModal.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
+
+  // INITIAL RENDER
   render();
 });
