@@ -20,16 +20,17 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  background:
-    url('bcg.jpg') no-repeat center top / cover, /* landscape image */
-    radial-gradient(800px 400px at 80% -10%, #2b221d 0%, transparent 60%),
-    radial-gradient(600px 300px at 10% 20%, #1e1815 0%, transparent 55%),
-    var(--black);
+  font-family: 'Lagom', sans-serif;
+  background-color: rgb(27, 15, 5); 
   color: var(--cream);
   line-height: 1.75;
   overflow-x: hidden;
 }
+
+h1, h2, h3, h4, h5, h6, p, span, a, button, li {
+  font-family: 'Lagom', sans-serif !important;
+}
+
 
 
 
@@ -61,7 +62,6 @@ body {
 }
 
 .hero-text h1 {
-  font-family: "Playfair Display", serif;
   font-size: clamp(46px, 6vw, 78px);
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -112,7 +112,6 @@ section {
 }
 
 section h2 {
-  font-family: "Playfair Display", serif;
   font-size: 50px;
   margin-bottom: 34px;
   letter-spacing: -0.02em;
@@ -258,7 +257,6 @@ footer {
 }
 
 .skill-modern h3 {
-  font-family: "Playfair Display", serif;
   font-size: 26px;
   color: var(--cream);
   margin-bottom: 28px;
@@ -369,7 +367,6 @@ footer {
 
 .modal-content h3 {
   margin-bottom: 16px;
-  font-family: "Playfair Display", serif;
   font-size: 26px;
   color: var(--gold);
 }
