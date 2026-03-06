@@ -84,11 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   let lang = "en";
+  let observer;
+  let lastFocusedElement = null;
 
   // RENDER FUNCTION
   function render() {
     const d = data[lang];
+    const langToggle = el("langToggle");
 
+    document.documentElement.lang = lang;
     el("name").textContent = d.name;
     el("title").textContent = d.title;
     el("aboutTitle").textContent = d.aboutTitle;
@@ -96,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el("skillsTitle").textContent = d.skillsTitle;
     el("projectTitle").textContent = d.projectTitle;
     el("contactTitle").textContent = d.contactTitle;
+    langToggle.textContent = lang === "en" ? "EN / SQ" : "SQ / EN";
 
     // SKILL CARDS
     const skillsGrid = el("skillsGrid");
@@ -108,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
       box.innerHTML = `
         <h3>${group.title}</h3>
         <div class="skill-tags">
-          ${group.items.map(item => `<span>${item}</span>`).join("")}
+          ${group.items.map(item => `<button type="button" class="skill-pill" data-skill="${item}">${item}</button>`).join("")}
         </div>
       `;
       skillsGrid.appendChild(box);
@@ -137,12 +142,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // INTERSECTION OBSERVER
   function observe() {
+    if (observer) {
+      observer.disconnect();
+    }
+
     const els = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => e.isIntersecting && e.target.classList.add("active"));
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
     }, { threshold: 0.15 });
 
-    els.forEach(el => obs.observe(el));
+    els.forEach(node => observer.observe(node));
   }
 
   // LANGUAGE TOGGLE
@@ -164,35 +178,83 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalName = el("modalSkillName");
   const modalDesc = el("modalSkillDesc");
   const closeModal = el("closeModal");
+  const modalContent = modal.querySelector(".modal-content");
+
+  function openModal(name, desc) {
+    lastFocusedElement = document.activeElement;
+    modalName.textContent = name;
+    modalDesc.textContent = desc;
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    setTimeout(() => {
+      modal.classList.add("show");
+      closeModal.focus();
+    }, 10);
+  }
+
+  function hideModal() {
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+    setTimeout(() => {
+      modal.style.display = "none";
+      if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+      }
+    }, 300);
+  }
 
   function attachSkillModal() {
-  const spans = document.querySelectorAll(".skill-tags span");
-  spans.forEach(span => {
-    span.onclick = () => {
-      // Marrja e përshkrimit sipas gjuhës aktuale
-      const desc = data[lang].skillDescriptions[span.textContent];
-      if(desc){
-        modalName.textContent = span.textContent;
-        modalDesc.textContent = desc;
-        modal.style.display = "flex";
-        setTimeout(() => modal.classList.add("show"), 10); // për efekt smooth scale/fade
-      }
-    };
-  });
-}
+    const skills = document.querySelectorAll(".skill-pill");
+    skills.forEach(skill => {
+      skill.onclick = () => {
+        const skillName = skill.dataset.skill || skill.textContent;
+        const desc = data[lang].skillDescriptions[skillName];
+        if (desc) {
+          openModal(skillName, desc);
+        }
+      };
+    });
+  }
 
+  closeModal.onclick = hideModal;
 
-  closeModal.onclick = () => {
-    modal.classList.remove("show");
-    setTimeout(() => modal.style.display = "none", 300);
-  };
-
-  window.onclick = (e) => {
-    if(e.target === modal){
-      modal.classList.remove("show");
-      setTimeout(() => modal.style.display = "none", 300);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      hideModal();
     }
-  };
+  });
+
+  modalContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+      hideModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab" || modal.getAttribute("aria-hidden") !== "false") {
+      return;
+    }
+
+    const focusable = modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+    if (!focusable.length) {
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 
   // INITIAL RENDER
   render();

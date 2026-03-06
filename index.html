@@ -18,7 +18,7 @@
   <!-- HERO -->
   <header class="hero reveal" id="top">
     <div class="hero-text">
-      <button id="langToggle">EN / SQ</button>
+      <button id="langToggle" type="button" aria-label="Toggle language between English and Albanian">EN / SQ</button>
 
       <h1 id="name"></h1>
       <h2 id="title"></h2>
@@ -47,8 +47,7 @@
   <section class="project reveal">
     <!-- <span class="badge">Projects</span> -->
     <h2 id="projectTitle"></h2>
-    <h3 id="projectName"></h3>
-    <p id="projectDesc"></p>
+    <div id="projectDesc"></div>
   </section>
 
   <!-- CONTACT -->
@@ -65,7 +64,7 @@
       </a>
 
       <!-- BACK TO TOP -->
-      <a class="cta" id="goTop">Back to Top</a>
+      <button class="cta" id="goTop" type="button">Back to Top</button>
     </div>
   </section>
 
@@ -74,9 +73,9 @@
 </div>
 
 <!-- SKILL POPUP MODERN -->
-<div id="skillModal" class="modal">
+<div id="skillModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalSkillName" aria-describedby="modalSkillDesc" aria-hidden="true">
   <div class="modal-content">
-    <span id="closeModal" class="close">&times;</span>
+    <button id="closeModal" class="close" type="button" aria-label="Close dialog">&times;</button>
     <h3 id="modalSkillName"></h3>
     <p id="modalSkillDesc"></p>
   </div>

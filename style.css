@@ -79,9 +79,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, li {
   margin-top: 48px;
   padding: 18px 42px;
   border-radius: 999px;
+  border: 0;
   background: linear-gradient(135deg, var(--cream), var(--gold));
   color: #111;
   font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
   text-decoration: none;
   box-shadow: 0 20px 60px rgba(246,242,235,.35);
   transition: transform .6s cubic-bezier(.2,.8,.2,1),
@@ -125,25 +128,10 @@ section h2 {
 }
 
 /* SKILLS */
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.skill-tags span {
-  padding: 14px 24px;
-  background: linear-gradient(180deg, var(--mocha), var(--espresso));
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 14px;
-  color: var(--gold);
-  letter-spacing: .3px;
-  transition: transform .4s ease;
-}
-
-.skill-tags span:hover {
-  transform: translateY(-4px);
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
 }
 
 /* PROJECT */
@@ -268,20 +256,30 @@ footer {
   gap: 14px;
 }
 
-.skill-tags span {
+.skill-pill {
   padding: 10px 20px;
   border-radius: 999px;
   font-size: 13px;
   color: var(--gold);
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
   transition: all .35s ease;
 }
 
-.skill-tags span:hover {
+.skill-pill:hover {
   background: var(--gold);
   color: #111;
   transform: translateY(-3px);
+}
+
+.skill-pill:focus-visible,
+.cta:focus-visible,
+.hero-text button:focus-visible,
+.close:focus-visible,
+.contact-item:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 .contact {
@@ -348,6 +346,7 @@ footer {
 }
 
 .modal-content {
+  position: relative;
   background: linear-gradient(145deg, #1c1612, #241c18); /* gradient elegant */
   padding: 30px 28px;
   border-radius: 24px;
