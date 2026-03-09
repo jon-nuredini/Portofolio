@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  font-family: 'Lagom', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: rgb(27, 15, 5); 
   color: var(--cream);
   line-height: 1.75;
@@ -28,7 +28,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p, span, a, button, li {
-  font-family: 'Lagom', sans-serif !important;
+  font-family: inherit;
 }
 
 
@@ -193,15 +193,32 @@ footer {
 }
 
 /* SCROLL ANIMATIONS */
-.reveal {
+.js-enabled .reveal {
   opacity: 0;
   transform: translateY(70px);
   transition: all 1.3s cubic-bezier(.16,.84,.44,1);
 }
 
-.reveal.active {
+.js-enabled .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js-enabled .reveal,
+  .js-enabled .reveal.active,
+  .cta,
+  .skill-modern,
+  .project-card,
+  .close {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* RESPONSIVE */

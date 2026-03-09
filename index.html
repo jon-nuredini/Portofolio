@@ -4,14 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jon Nuredini – Portfolio</title>
+  <meta name="description" content="Portfolio of Jon Nuredini, Full Stack Developer.">
 
   <!-- Fonts -->
-   <link href="https://fonts.googleapis.com/css2?family=Lagom:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
+  <script>document.documentElement.classList.add("js-enabled");</script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<noscript>
+  <style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+  </style>
+</noscript>
 
 <div class="container">
 
@@ -27,7 +35,7 @@
     </div>
 
     <div class="hero-image reveal">
-      <img src="profile.jpeg" alt="Jon Nuredini">
+      <img src="profile.jpeg" alt="Jon Nuredini" decoding="async" fetchpriority="high">
     </div>
   </header>
 
