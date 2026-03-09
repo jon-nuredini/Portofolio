@@ -147,6 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(node => node.classList.add("active"));
+      return;
+    }
+
     observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
